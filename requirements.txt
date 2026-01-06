@@ -1,5 +1,5 @@
 pandas
 openpyxl
-meteostat
+meteostat==1.7.6
 tqdm
 
