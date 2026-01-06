@@ -13,7 +13,7 @@ import argparse
 import sys
 from datetime import datetime
 import pandas as pd
-from meteostat import Point, Hourly
+from meteostat import Point, hourly
 
 
 # Dhaka coordinates
@@ -83,10 +83,10 @@ def fetch_weather_data(start_date, end_date):
     location = Point(DHAKA_LAT, DHAKA_LON, DHAKA_ALT)
     
     # Fetch hourly data - single API call for the entire date range
-    data = Hourly(location, start_date, end_date)
+    data = hourly(location, start_date, end_date)
     df = data.fetch()
     
-    if df.empty:
+    if df is None or df.empty:
         print("Warning: No data retrieved from Meteostat", file=sys.stderr)
         return pd.DataFrame()
     
